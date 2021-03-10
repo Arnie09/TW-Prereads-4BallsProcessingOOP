@@ -4,15 +4,7 @@ public class FourBallsOOPs extends PApplet {
 
     public static final int HEIGHT = 480;
     public static final int WIDTH = 720;
-    
-    public final double ball_width = 10;
-    public final double ball_height = 10;
-    public final double balls_initial_x_position = 0;
-    
-    public final double ball1_y_position = HEIGHT / 5.0;
-    public final double ball2_y_position = 2 * HEIGHT / 5.0;
-    public final double ball3_y_position = 3 * HEIGHT / 5.0;
-    public final double ball4_y_position = 4 * HEIGHT / 5.0;
+
     private Ball ball1;
     private Ball ball2;
     private Ball ball3;
@@ -30,10 +22,19 @@ public class FourBallsOOPs extends PApplet {
 
     @Override
     public void setup() {
-        ball1 = new Ball(balls_initial_x_position, ball1_y_position, ball_width, ball_height);
-        ball2 = new Ball(balls_initial_x_position, ball2_y_position, ball_width, ball_height);
-        ball3 = new Ball(balls_initial_x_position, ball3_y_position, ball_width, ball_height);
-        ball4 = new Ball(balls_initial_x_position, ball4_y_position, ball_width, ball_height);
+        double ball_width = 10;
+        double ball_height = 10;
+        double balls_initial_x_position = 0;
+
+        double ball1_y_position = HEIGHT / 5.0;
+        double ball2_y_position = 2 * HEIGHT / 5.0;
+        double ball3_y_position = 3 * HEIGHT / 5.0;
+        double ball4_y_position = 4 * HEIGHT / 5.0;
+
+        ball1 = new Ball(balls_initial_x_position, ball1_y_position, ball_width, ball_height, 1);
+        ball2 = new Ball(balls_initial_x_position, ball2_y_position, ball_width, ball_height, 2);
+        ball3 = new Ball(balls_initial_x_position, ball3_y_position, ball_width, ball_height, 3);
+        ball4 = new Ball(balls_initial_x_position, ball4_y_position, ball_width, ball_height, 4);
     }
 
     @Override
@@ -43,16 +44,16 @@ public class FourBallsOOPs extends PApplet {
     }
 
     private void updateCircles() {
-        ball1.increment_x_position(1);
-        ball2.increment_x_position(2);
-        ball3.increment_x_position(3);
-        ball4.increment_x_position(4);
+        ball1.move_x();
+        ball2.move_x();
+        ball3.move_x();
+        ball4.move_x();
     }
 
     private void drawCircles() {
-        ellipse(ball1.getX(), ball1.getY(), ball1.getHeight(), ball1.getWidth());
-        ellipse(ball2.getX(), ball2.getY(), ball2.getHeight(), ball2.getWidth());
-        ellipse(ball3.getX(), ball3.getY(), ball3.getHeight(), ball3.getWidth());
-        ellipse(ball4.getX(), ball4.getY(), ball4.getHeight(), ball4.getWidth());
+        ellipse((float)ball1.get_x_position(), (float)ball1.get_y_position(), ball1.getHeight(), ball1.getWidth());
+        ellipse((float)ball2.get_x_position(), (float)ball2.get_y_position(), ball2.getHeight(), ball2.getWidth());
+        ellipse((float)ball3.get_x_position(), (float)ball3.get_y_position(), ball3.getHeight(), ball3.getWidth());
+        ellipse((float)ball4.get_x_position(), (float)ball4.get_y_position(), ball4.getHeight(), ball4.getWidth());
     }
 }
